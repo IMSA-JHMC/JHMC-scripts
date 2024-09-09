@@ -1,7 +1,7 @@
 const AirtablePlus = require('airtable-plus');
 const CSV = require('csvtojson');
 
-const { apiKey, baseID, sampleTestId } = require('./../secrets.js');
+const { apiKey, baseID, sampleTestId } = require('../secrets.js');
 
 // baseID, apiKey, and tableName can alternatively be set by environment variables
 const testsTable = new AirtablePlus({ tableName: "Tests", apiKey, baseID }),
@@ -18,7 +18,7 @@ const schoolAttributes = ['Coach Name', 'Email Address'];
 const tableValues = ['Coach Name', 'Coach Email'];
 
 // Change once we get actual rosters
-const csvFilePath = './../private-data/2022updvirtual.csv';
+const csvFilePath = './private-data/2024roster.csv';
 
 (async () => {
     // Start by getting competitions
@@ -223,8 +223,8 @@ const csvFilePath = './../private-data/2022updvirtual.csv';
                         finalJSON['Students'] = [studentRow[0]['id']];
                         finalJSON['Competition'] = [row[0]['id']];
 
-                        // console.log(finalJSON);
-                        // await testsTable.create(finalJSON);
+                        console.log(finalJSON);
+                        await testsTable.create(finalJSON);
                     }
                 }
 
